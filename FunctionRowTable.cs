@@ -12,21 +12,21 @@ namespace TestTask
         private double _y;
         private double? _f;
 
-        /// <summary>Значение X
+        /// <summary>Значение X.</summary>
         public double X { get => _x; set => _x = value; }
 
 
         /// <summary>Значение Y.</summary>
         public double Y { get => _y; set => _y = value; }
 
-        /// <summary>Значение Функции для текущих значений <see cref="X"/> и <see cref="Y"
+        /// <summary>Значение Функции для текущих значений <see cref="X"/> и <see cref="Y".</summary>
         public double? F { get => _f; private set => _f = value; }
 
 
         private FunctionModel function;
 
-        /// <summary>Задаёт Функцию от двух аргументов
-        /// <param name="function">Функция от двух аргументов
+        /// <summary>Задаёт Функцию от двух аргументов.</summary>
+        /// <param name="function">Функция от двух аргументов.</param>
         public void SetFunction(FunctionModel function)
         {
             this.function = function ?? throw new ArgumentNullException(nameof(function));

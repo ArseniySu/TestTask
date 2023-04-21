@@ -8,25 +8,25 @@ namespace TestTask
 {
     internal class FunctionModel
     {
-        /// <summary>Имя Функции
+        /// <summary>Имя Функции.</summary>
         public string Name { get; }
 
-        /// <summary>Делегат Функции
+        /// <summary>Делегат Функции.</summary>
         public Func<double, double, double> Function { get; }
 
-        /// <summary>Коэффициент A
+        /// <summary>Коэффициент A.</summary>
         public double A { get; set; }
 
-        /// <summary>Коэффициент B
+        /// <summary>Коэффициент B.</summary>
         public double B { get; set; }
 
-        /// <summary>Коэффициент C
+        /// <summary>Коэффициент C.</summary>
         public double C { get; set; }
 
         public IReadOnlyList<double> Arguments { get; }
 
-        /// <summary>Создаёт экземпляр <see cref="FunctionModel"
-        /// <param name="name">Имя Функции
+        /// <summary>Создаёт экземпляр <see cref="FunctionModel".</summary>
+        /// <param name="name">Имя Функции.</param>
         /// <param name="function">Делегат Функции.</param>
         public FunctionModel(string name, IEnumerable<double> arguments, Func<double, double, double, double, double, double> function)
         {

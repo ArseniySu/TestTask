@@ -20,11 +20,26 @@ namespace TestTask
 
         public MainWindowViewModel()
         {
-            Functions.Add(new FunctionModel("Линейная", new List<double> { 1, 2, 3, 4, 5 }, (a, b, c, x, y) => a * x + b * 1 + c) { A = 0, B = 0, C = 1 });
-            Functions.Add(new FunctionModel("Квадратичная", new List<double> { 10, 20, 30, 40, 50 }, (a, b, c, x, y) => a * Math.Pow(x, 2) + b * Math.Pow(y, 1) + c) { A = 0, B = 0, C = 10 });
-            Functions.Add(new FunctionModel("3-й степени", new List<double> { 100, 200, 300, 400, 500 }, (a, b, c, x, y) => a * Math.Pow(x, 3) + b * Math.Pow(y, 2) + c) { A = 0, B = 0, C = 100 });
-            Functions.Add(new FunctionModel("4-ой степени", new List<double> { 1000, 2000, 3000, 4000, 5000 }, (a, b, c, x, y) => a * Math.Pow(x, 4) + b * Math.Pow(y, 3) + c) { A = 0, B = 0, C = 1000 });
-            Functions.Add(new FunctionModel("5-ой степени", new List<double> { 10000, 20000, 30000, 40000, 50000 }, (a, b, c, x, y) => a * Math.Pow(x, 5) + b * Math.Pow(y, 4) + c) { A = 0, B = 0, C = 10000 });
+            Functions.Add(new FunctionModel("Линейная", 
+                new List<double> { 1, 2, 3, 4, 5 }, 
+                (a, b, c, x, y) => a * x + b * 1 + c) 
+            { A = 0, B = 0, C = 1 });
+            Functions.Add(new FunctionModel("Квадратичная", 
+                new List<double> { 10, 20, 30, 40, 50 }, 
+                (a, b, c, x, y) => a * Math.Pow(x, 2) + b * Math.Pow(y, 1) + c) 
+            { A = 0, B = 0, C = 10 });
+            Functions.Add(new FunctionModel("3-й степени", 
+                new List<double> { 100, 200, 300, 400, 500 }, 
+                (a, b, c, x, y) => a * Math.Pow(x, 3) + b * Math.Pow(y, 2) + c) 
+            { A = 0, B = 0, C = 100 });
+            Functions.Add(new FunctionModel("4-ой степени", 
+                new List<double> { 1000, 2000, 3000, 4000, 5000 }, 
+                (a, b, c, x, y) => a * Math.Pow(x, 4) + b * Math.Pow(y, 3) + c) 
+            { A = 0, B = 0, C = 1000 });
+            Functions.Add(new FunctionModel("5-ой степени", 
+                new List<double> { 10000, 20000, 30000, 40000, 50000 }, 
+                (a, b, c, x, y) => a * Math.Pow(x, 5) + b * Math.Pow(y, 4) + c) 
+            { A = 0, B = 0, C = 10000 });
 
             CalculatedFunctions.CollectionChanged += OnRowsChanged;
             IsNewFunction = true;
@@ -33,10 +48,12 @@ namespace TestTask
         {
             // Добавление выбранной Функции в новую строку.
             if (e.Action == NotifyCollectionChangedAction.Add)
+            {
                 foreach (FunctionRowTable row in e.NewItems)
                 {
                     row.SetFunction(SelectedFunction);
                 }
+            }
         }
 
         /// <summary>Строки вычисленных значений.</summary>
@@ -52,7 +69,12 @@ namespace TestTask
         public RelayCommand InputFunctionCommand => _inputFunctionCommand
          ?? (_inputFunctionCommand = new RelayCommand
         (
-             (_inputFunctionCommand) => { IsNewFunction = true; CalculatedFunctions.Clear(); NameSelectedFunction = string.Empty; },
+             (_inputFunctionCommand) => 
+             { 
+                 IsNewFunction = true; 
+                 CalculatedFunctions.Clear(); 
+                 NameSelectedFunction = string.Empty; 
+             },
              (_inputFunctionCommand) => !IsNewFunction
         ));
 
@@ -62,7 +84,12 @@ namespace TestTask
         public RelayCommand InputXyCommand => _inputXyCommand
          ?? (_inputXyCommand = new RelayCommand
         (
-             (_inputXyCommand) => { IsNewFunction = false; CalculatedFunctions.Clear(); NameSelectedFunction = SelectedFunction?.Name; },
+             (_inputXyCommand) => 
+             { 
+                 IsNewFunction = false; 
+                 CalculatedFunctions.Clear(); 
+                 NameSelectedFunction = SelectedFunction?.Name; 
+             },
              (_inputXyCommand) => IsNewFunction
         ));
 
