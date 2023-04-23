@@ -23,12 +23,12 @@ namespace TestTask
             this._execute = execute;
             this._canExecute = canExecute;
         }
-
+        /// <summary> может ли команда выполняться</summary>
         public bool CanExecute(object parameter)
         {
             return this._canExecute == null || this._canExecute(parameter);
         }
-
+        /// <summary> выполняет логику команды </summary>
         public void Execute(object parameter)
         {
             this._execute(parameter);
